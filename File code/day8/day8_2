@@ -1,0 +1,68 @@
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 
+            'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+
+
+#TODO-1: Create a function called 'encrypt' that takes the 'text' and 'shift' as inputs.
+# def encrypt(text1, shift1):
+#     newString = ""
+#     for i in text1:
+#         viTriKyTu = alphabet.index(i)
+#         shiftToPosi = viTriKyTu + shift1
+#         addNewChar = alphabet[shiftToPosi]
+#         newString += addNewChar
+#     print(f"text la: {text1}")
+#     print(f"newString la: {newString}")
+    #TODO-2: Inside the 'encrypt' function, shift each letter of the 'text' forwards 
+    # in the alphabet by the shift amount and print the encrypted text.  
+    #e.g. 
+    #plain_text = "hello"
+    #shift = 5
+    #cipher_text = "mjqqt"
+    #print output: "The encoded text is mjqqt"
+# def decrypt(needReserve, shift2):
+#     stringReserve = ""
+#     for i in needReserve:
+#         viTriKyTu = alphabet.index(i)
+#         shiftToPosi = viTriKyTu - shift2
+#         addnewChar = alphabet[shiftToPosi]
+#         stringReserve += addnewChar
+#     print(f"chuoi reverse duoc ve la: {stringReserve}") 
+    ##HINT: How do you get the index of an item in a list:
+    #https://stackoverflow.com/questions/176918/finding-the-index-of-an-item-in-a-list
+
+    ##🐛Bug alert: What happens if you try to encode the word 'civilization'?🐛
+def checkMode(from_text, from_shift, mode):
+    if(mode == "encode"):
+        newString = ""
+        for i in from_text:
+            if i in alphabet:
+                viTriKyTu = alphabet.index(i)
+                toPosition = viTriKyTu + from_shift
+                addNewChar = alphabet[toPosition]
+                newString += addNewChar
+            else:
+                newString += i
+        print(f"New string: {newString}" )
+    elif(mode == "decode"):
+        stringReverse = ""
+        for i in from_text:
+            if i in from_text:
+                viTriKyTu = alphabet.index(i)
+                toPosition = viTriKyTu - from_shift
+                addNewChar = alphabet[toPosition]
+                stringReverse += addNewChar
+            else:
+                newString += i
+        print(f"String Reverse: {stringReverse}" )
+#TODO-3: Call the encrypt function and pass in the user inputs. You should be able to test the code and encrypt a message. 
+while 1:
+    tiepTucKo = input("Type yes if continue, type no if you want end!: ")
+    if tiepTucKo == "no":
+        print("Cut'")
+        break;
+    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+    text = input("Type your message:\n").lower()
+    shift = int(input("Type the shift number:\n"))
+    checkMode(text, (shift % len(alphabet)), direction)
+    
